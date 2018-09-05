@@ -1,18 +1,17 @@
 using Toybox.WatchUi;
 using Toybox.System;
 
-class TeaTimerMenuDelegate extends WatchUi.MenuInputDelegate {
+class TeaTimerMenuDelegate extends WatchUi.Menu2InputDelegate {
 
     function initialize() {
-        MenuInputDelegate.initialize();
+        Menu2InputDelegate.initialize();
     }
 
-    function onMenuItem(item) {
-        if (item == :item_1) {
-            System.println("item 1");
-        } else if (item == :item_2) {
-            System.println("item 2");
-        }
+    function onSelect(item) {
+        System.println(item.getId());
+        
+        // Go back to the main view
+        WatchUi.switchToView(new TeaTimerView(), new TeaTimerDelegate(), WatchUi.SLIDE_DOWN);
     }
 
 }
