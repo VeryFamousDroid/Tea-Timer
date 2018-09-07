@@ -6,9 +6,8 @@ class TeaTimerDelegate extends WatchUi.BehaviorDelegate {
         BehaviorDelegate.initialize();
     }
 
-    function onMenu() {
+    function onSelect() {
         var menu = new WatchUi.Menu2({:title => "Tea Menu"});
-        var delegate = new WatchUi.Menu2InputDelegate();
         
         menu.addItem(
             new MenuItem(
@@ -28,7 +27,7 @@ class TeaTimerDelegate extends WatchUi.BehaviorDelegate {
             )
         );
         
-        WatchUi.pushView(menu, new TeaTimerMenuDelegate(), WatchUi.SLIDE_UP);
+        WatchUi.pushView(menu, new TeaTimerMenuDelegate(), WatchUi.SLIDE_LEFT);
         
         return true;
     }

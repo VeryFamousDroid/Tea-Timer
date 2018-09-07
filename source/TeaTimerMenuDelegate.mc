@@ -11,7 +11,7 @@ class TeaTimerMenuDelegate extends WatchUi.Menu2InputDelegate {
         System.println(item.getId());
         
         // Go back to the main view
-        WatchUi.switchToView(new TeaTimerView(), new TeaTimerDelegate(), WatchUi.SLIDE_DOWN);
+        WatchUi.switchToView(new TeaTimerView(), new TeaTimerDelegate(), WatchUi.SLIDE_RIGHT);
     }
 
 }

@@ -1,7 +1,27 @@
 using Toybox.WatchUi;
+using Toybox.Graphics as Gfx;
 
 class TeaTimerView extends WatchUi.View {
-
+    function displayRemainingTime() {
+        var timeString = "4:00";
+        var font = WatchUi.loadResource(Rez.Fonts.Carlito_Large);
+        
+        var timeView = View.findDrawableById("TimeRemaining");
+        timeView.setFont(font);
+        timeView.setColor(Gfx.COLOR_BLACK);
+        timeView.setText(timeString);
+    }
+    
+    function displayTeaInfo() {
+        var stepsString = "Black, 212 deg";
+        var font = WatchUi.loadResource(Rez.Fonts.Carlito);
+        
+        var stepsView = View.findDrawableById("TeaInfo");
+        stepsView.setFont(font);
+        stepsView.setColor(Gfx.COLOR_BLACK);
+        stepsView.setText(stepsString);
+    }
+    
     function initialize() {
         View.initialize();
     }
@@ -19,6 +39,9 @@ class TeaTimerView extends WatchUi.View {
 
     // Update the view
     function onUpdate(dc) {
+        displayRemainingTime();
+        displayTeaInfo();
+        
         // Call the parent onUpdate function to redraw the layout
         View.onUpdate(dc);
     }
