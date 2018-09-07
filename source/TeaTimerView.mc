@@ -13,13 +13,22 @@ class TeaTimerView extends WatchUi.View {
     }
     
     function displayTeaInfo() {
-        var stepsString = "Black, 212 deg";
+        var degreeSymbol = StringUtil.utf8ArrayToString([194,176]);
+        var stepsString = Lang.format("Black, 212$1$F", [degreeSymbol]);
         var font = WatchUi.loadResource(Rez.Fonts.Carlito);
         
         var stepsView = View.findDrawableById("TeaInfo");
         stepsView.setFont(font);
         stepsView.setColor(Gfx.COLOR_BLACK);
         stepsView.setText(stepsString);
+    }
+    
+    function setButtonFont() {
+        var font = WatchUi.loadResource(Rez.Fonts.Carlito);
+        
+        var stepsView = View.findDrawableById("ButtonLabel");
+        stepsView.setFont(font);
+        stepsView.setColor(Gfx.COLOR_WHITE);        
     }
     
     function initialize() {
