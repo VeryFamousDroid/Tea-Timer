@@ -6,7 +6,7 @@ class TeaTimerDelegate extends WatchUi.BehaviorDelegate {
         BehaviorDelegate.initialize();
     }
 
-    function onSelect() {
+    function teaSelect() {
         var menu = new WatchUi.Menu2({:title => "Tea Menu"});
         
         menu.addItem(
