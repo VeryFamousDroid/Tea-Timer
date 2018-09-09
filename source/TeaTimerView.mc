@@ -2,8 +2,10 @@ using Toybox.WatchUi;
 using Toybox.Graphics as Gfx;
 
 class TeaTimerView extends WatchUi.View {
+    var selectedTea;
+
     function displayRemainingTime() {
-        var timeString = "4:00";
+        var timeString = Lang.format("$1$:00", [selectedTea["time"]]);
         var font = WatchUi.loadResource(Rez.Fonts.Carlito_Large);
         
         var timeView = View.findDrawableById("TimeRemaining");
@@ -14,7 +16,7 @@ class TeaTimerView extends WatchUi.View {
     
     function displayTeaInfo() {
         var degreeSymbol = StringUtil.utf8ArrayToString([194,176]);
-        var stepsString = Lang.format("Black, 212$1$F", [degreeSymbol]);
+        var stepsString = Lang.format("$1$, $2$$3$F", [selectedTea["name"], selectedTea["temp"], degreeSymbol]);
         var font = WatchUi.loadResource(Rez.Fonts.Carlito);
         
         var stepsView = View.findDrawableById("TeaInfo");
@@ -28,10 +30,22 @@ class TeaTimerView extends WatchUi.View {
         
         var stepsView = View.findDrawableById("ButtonLabel");
         stepsView.setFont(font);
-        stepsView.setColor(Gfx.COLOR_WHITE);        
+        stepsView.setColor(Gfx.COLOR_WHITE);
     }
     
+    function loadSelectedTea() {
+        var teaID = Application.Storage.getValue("selectedTeaID");
+        if (teaID == null) {
+            teaID = 0;        
+        }
+        var teas = WatchUi.loadResource(Rez.JsonData.Teas);
+        
+        selectedTea = teas[teaID];
+    }
+    
+    
     function initialize() {
+        loadSelectedTea();
         View.initialize();
     }
 
@@ -48,6 +62,7 @@ class TeaTimerView extends WatchUi.View {
 
     // Update the view
     function onUpdate(dc) {
+        loadSelectedTea();
         displayRemainingTime();
         displayTeaInfo();
         
