@@ -2,26 +2,26 @@
   {
     "name": "Black",
     "temp": 212,
-    "time": 4
+    "time": 240
   },
   {
     "name": "Green",
     "temp": 175,
-    "time": 2
+    "time": 120
   },
   {
     "name": "Oolong",
     "temp": 185,
-    "time":  3
+    "time":  180
   },
   {
     "name": "White",
     "temp": 160,
-    "time": 2
+    "time": 120
   },
   {
     "name": "Herbal",
     "temp": 212,
-    "time": 5
+    "time": 300
   }
 ]

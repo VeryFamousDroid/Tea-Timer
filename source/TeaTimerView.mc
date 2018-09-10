@@ -3,9 +3,23 @@ using Toybox.Graphics as Gfx;
 
 class TeaTimerView extends WatchUi.View {
     var selectedTea;
+    
+    function getTimeRemaining() {
+        var timeRemaining = Application.Storage.getValue("timeRemaining");
+        if (timeRemaining == null) {
+            timeRemaining = selectedTea["time"];  
+            Application.Storage.setValue("timeRemaining", timeRemaining); 
+        }
 
+        return timeRemaining;
+    }
+    
     function displayRemainingTime() {
-        var timeString = Lang.format("$1$:00", [selectedTea["time"]]);
+        var timeRemaining = getTimeRemaining();
+        var minutes = timeRemaining / 60;
+        var seconds = timeRemaining % 60;
+        
+        var timeString = Lang.format("$1$:$2$", [minutes, seconds.format("%02d")]);
         var font = WatchUi.loadResource(Rez.Fonts.Carlito_Large);
         
         var timeView = View.findDrawableById("TimeRemaining");
@@ -32,6 +46,8 @@ class TeaTimerView extends WatchUi.View {
         stepsView.setFont(font);
         stepsView.setColor(Gfx.COLOR_WHITE);
     }
+    
+    
     
     function loadSelectedTea() {
         var teaID = Application.Storage.getValue("selectedTeaID");
