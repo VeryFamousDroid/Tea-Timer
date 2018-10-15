@@ -19,11 +19,15 @@ class TeaTimerDelegate extends WatchUi.BehaviorDelegate {
     }
     
     function onKey(keyEvent) {
-        if (keyEvent.getKey() == WatchUi.KEY_ENTER && !isBrewing) {
-            startTimer();
+        if (keyEvent.getKey() == WatchUi.KEY_ENTER) {
+            if (!isBrewing) {
+                startTimer();
+            }
+            
+            return true;
         }
         
-        return true;
+        return false;
     }
     
     function gettimeRemaining() {
