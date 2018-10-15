@@ -5,7 +5,12 @@ class TeaTimerView extends WatchUi.View {
     var selectedTea;
     
     function resetTime() {
-        drawTime(selectedTea["time"]);
+        var brewTime = Application.Storage.getValue("brewingTime");
+        if (brewTime == null) {
+            brewTime = selectedTea["time"];
+        }
+        
+        Application.Storage.setValue("timeRemaining", brewTime);
     }
     
     function getTimeRemaining() {
@@ -97,14 +102,9 @@ class TeaTimerView extends WatchUi.View {
     
     function getArcAngle() {
         var timeRemaining = getTimeRemaining();
-        var brewingTime = Application.Storage.getValue("brewingTime");
+        var brewingTime = Application.Storage.getValue("brewingTime");        
         
-        
-        var arc_angle = 360;
-        
-        //if (stepGoal > steps) {
-            arc_angle = (360 * timeRemaining) / brewingTime;
-        //}
+        var arc_angle = (360 * timeRemaining) / brewingTime;
         
         arc_angle = 90 - arc_angle;
         if (arc_angle < 0) {
@@ -114,9 +114,7 @@ class TeaTimerView extends WatchUi.View {
         return arc_angle;
     }
     
-    function drawTimerArc(dc) {
-        System.println("Arc draw!");
-        
+    function drawTimerArc(dc) {        
         var height = dc.getHeight();
         var width = dc.getWidth();
         
