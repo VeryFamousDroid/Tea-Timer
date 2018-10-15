@@ -58,11 +58,11 @@ class TeaTimerDelegate extends WatchUi.BehaviorDelegate {
     function notify() {
         if (Attention has :vibrate) {
             var vibrationPattern = [
-                new Attention.VibeProfile(50, 2000), // On for two seconds
-                new Attention.VibeProfile(0, 2000),  // Off for two seconds
-                new Attention.VibeProfile(50, 2000), // On for two seconds
-                new Attention.VibeProfile(0, 2000),  // Off for two seconds
-                new Attention.VibeProfile(50, 2000)  // on for two seconds 
+                new Attention.VibeProfile(50, 1000), // On for 1 second
+                new Attention.VibeProfile(0, 500),  // Off for 1/2 second
+                new Attention.VibeProfile(50, 1000), // On for 1 second
+                new Attention.VibeProfile(0, 500),  // Off for 1/2 second
+                new Attention.VibeProfile(50, 1000)  // on for 1 second
             ]; 
             
             Attention.vibrate(vibrationPattern); 
@@ -70,10 +70,8 @@ class TeaTimerDelegate extends WatchUi.BehaviorDelegate {
     }
     
     function teaSelect() {
-        var menu = new WatchUi.Menu2({:title => "Tea Menu"});
-        
-        var teas = WatchUi.loadResource(Rez.JsonData.Teas);
-        
+        var menu = new WatchUi.Menu2({:title => "Tea Menu"});        
+        var teas = WatchUi.loadResource(Rez.JsonData.Teas);        
         var degreeSymbol = StringUtil.utf8ArrayToString([194,176]);
         
         for (var i=0; i<teas.size(); i++) {
