@@ -2,14 +2,5 @@
 	<drawable class="Background" />    
 	<label id="TeaInfo" x="center" y="50" justification="Gfx.TEXT_JUSTIFY_CENTER" />
     <label id="TimeRemaining" x="center" y="75" justification="Graphics.TEXT_JUSTIFY_CENTER" />
-    <label id="MessageLabel" x="center" y="140" justification="Gfx.TEXT_JUSTIFY_CENTER" text="Select to choose tea" />
-    <!--<button id="TeaButton" x="center" y="165" width="250" height="150">
-        <state id="stateDefault" color="0x00b300" />
-        <state id="stateHighlighted" color="0x008000" />
-        <state id="stateSelected" color="0x008000" />
-        <state id="stateDisabled" color="Gfx.COLOR_DK_GRAY" />
-        <param name="background">Gfx.COLOR_BLACK</param>
-        <param name="behavior">teaSelect</param>
-    </button>
-    <label id="ButtonLabel" x="center" y="175" justification="Gfx.TEXT_JUSTIFY_CENTER" text="Pick Tea" />-->
+    <label id="MessageLabel" x="center" y="145" justification="Gfx.TEXT_JUSTIFY_CENTER" />
 </layout>
