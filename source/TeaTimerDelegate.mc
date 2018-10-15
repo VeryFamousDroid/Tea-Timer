@@ -13,7 +13,9 @@ class TeaTimerDelegate extends WatchUi.BehaviorDelegate {
     }
     
     function onSelect() {
-        teaSelect();
+        if (!isBrewing) {
+            teaSelect();
+        }
     }
     
     function onKey(keyEvent) {
