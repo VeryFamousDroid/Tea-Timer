@@ -14,13 +14,14 @@ class TeaTimerView extends WatchUi.View {
     }
     
     function getTimeRemaining() {
+    /*
         var timeRemaining = Application.Storage.getValue("timeRemaining");
         if (timeRemaining == null || timeRemaining == 0) {
             timeRemaining = selectedTea["time"];  
             Application.Storage.setValue("timeRemaining", timeRemaining); 
         }
-
-        return timeRemaining;
+*/
+        return $.timeRemaining;
     }
     
     function getBrewingTime() {
@@ -154,8 +155,7 @@ class TeaTimerView extends WatchUi.View {
         displayMessage(getMessage());
         
         // Call the parent onUpdate function to redraw the layout
-        View.onUpdate(dc);
-        
+        View.onUpdate(dc);        
         
         drawTimerArc(dc);
     }
