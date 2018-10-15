@@ -1,10 +1,5 @@
 [
   {
-	"name": "Test",
-	"temp": 420,
-	"time":5
-  },
-  {
     "name": "Black",
     "temp": 212,
     "time": 240
