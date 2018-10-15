@@ -14,7 +14,7 @@ class TeaTimerMenuDelegate extends WatchUi.Menu2InputDelegate {
         var selectedTea = teas[item.getId()];  
         
         Application.Storage.setValue("brewingTime", selectedTea["time"]);
-        Application.Storage.setValue("timeRemaining", selectedTea["time"]);
+        $.timeRemaining = selectedTea["time"];
         
         // Go back to the main view
         WatchUi.popView(WatchUi.SLIDE_RIGHT);
