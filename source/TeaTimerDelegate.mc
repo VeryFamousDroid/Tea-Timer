@@ -2,13 +2,18 @@ using Toybox.WatchUi;
 
 class TeaTimerDelegate extends WatchUi.BehaviorDelegate {
     var teaTimer = new Timer.Timer();
+    var isBrewing = false;
     
     function initialize() {
         BehaviorDelegate.initialize();
     }
     
+    function onSelect() {
+        teaSelect();
+    }
+    
     function onKey(keyEvent) {
-        if (keyEvent.getKey() == WatchUi.KEY_ENTER) {
+        if (keyEvent.getKey() == WatchUi.KEY_ENTER && !isBrewing) {
             startTimer();            
             return true;
         }
@@ -19,9 +24,12 @@ class TeaTimerDelegate extends WatchUi.BehaviorDelegate {
     function startTimer() {
         System.println("Starting timer...");
         
-        var timeRemaining = Application.Storage.getValue("timeRemaining");
+        var timeRemaining = Application.Storage.getValue("brewingTime");
+        isBrewing = true;
         
         Application.Storage.setValue("timeRemaining", timeRemaining);
+        WatchUi.requestUpdate();
+        
         teaTimer.start(method(:timerCallback), 1000, true);
     }
     
@@ -30,6 +38,7 @@ class TeaTimerDelegate extends WatchUi.BehaviorDelegate {
         timeRemaining--;
         if (timeRemaining == 0) {
             teaTimer.stop();
+            resetTime();
             notify();
         }
         
@@ -37,9 +46,13 @@ class TeaTimerDelegate extends WatchUi.BehaviorDelegate {
         WatchUi.requestUpdate();
     }
     
-    function resetTimer() {
-        teaTimer.stop();      
-        Application.Storage.setValue("timeRemaining", null);
+    // Reset the time remaing to be the initial brewing time
+    function resetTime() {        
+        var brewTime = Application.Storage.getValue("brewingTime");
+        isBrewing = false;
+        
+        Application.Storage.setValue("timeRemaining", brewTime);
+        WatchUi.requestUpdate();
     }
     
     function notify() {
