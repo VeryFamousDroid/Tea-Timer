@@ -1,0 +1,27 @@
+[
+  {
+    "name": "Schwarz",
+    "temp": 100,
+    "time": 240
+  },
+  {
+    "name": "Grün",
+    "temp": 80,
+    "time": 120
+  },
+  {
+    "name": "Oolong",
+    "temp": 85,
+    "time":  180
+  },
+  {
+    "name": "Weiß",
+    "temp": 70,
+    "time": 120
+  },
+  {
+    "name": "Kräuter",
+    "temp": 100,
+    "time": 300
+  }
+]
